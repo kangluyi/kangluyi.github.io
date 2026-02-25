@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>陈延德的个人网站</title>
+    <link rel="icon" type="image/webp" href="images/avatar.webp">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="default">
+    <div class="main window">
+        <div class="greeting" id="greeting">
+            <div class="greeting-content">
+                <h1 class="greeting-title">欢迎来到我的个人网站</h1>
+                <p class="greeting-subtitle">很高兴认识你！</p>
+                <div class="greeting-avatar">
+                    <img src="images/avatar.webp">
+                </div>
+                <p class="greeting-text">我是陈延德，一名软件开发者</p>
+                <p class="greeting-text">点击下方按钮开始探索</p>
+                <button class="greeting-btn" id="greeting_start">开始探索</button>
+            </div>
+        </div>
+        <div class="home" id="home">
+            <div class="left">
+                <div class="avatar" id="main_home_left_avatar">
+                    <img src="images/avatar.webp">
+                </div>
+                
+                <h1 class="title">陈延德</h1>
+                <div class="intro">
+                    <p class="text">姓名「陈延德」，软件开发者</p>
+                    <p class="text">热爱编程，专注于前端和后端开发</p>
+                    <p class="text">对新技术充满热情，不断学习成长</p>
+                    <p class="text">喜欢分享知识，帮助他人</p>
+                    <p class="text">请多指教！</p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="menu" id="home_learn">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
+                    </svg>
+                    <h1 class="title">了解</h1>
+                    <p class="subtitle">通过各种词条，了解我究竟是一个怎样的人。</p>
+                </div>
+                <div class="menu" id="home_projects">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
+                    </svg>
+                    <h1 class="title">项目</h1>
+                    <p class="subtitle">这是我开发过或正在开发的主要项目。</p>
+                </div>
+                <div class="menu" id="home_contact">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
+                    </svg>
+                    <h1 class="title">联系</h1>
+                    <p class="subtitle">您可以通过这些渠道联系上我。</p>
+                </div>
+                <div class="menu" id="home_donate">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
+                    </svg>
+                    <h1 class="title">捐助</h1>
+                    <p class="subtitle">如果您有条件，不妨伸出援手，这对我真的很重要！</p>
+                </div>
+            </div>
+        </div>
+        <div class="content" id="main_content">
+            <div class="titleBar">
+                <div class="btn" id="main_content_close">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6V18Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p id="main_content_title"></p>
+            </div>
+            <iframe class="frame" id="main_content_frame"></iframe>
+        </div>
+        <svg id="main_loading" class="loading" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16">
+            <circle class="circle1" cx="8px" cy="8px" r="7px"/>
+            <circle class="circle2" cx="8px" cy="8px" r="7px"/>
+        </svg>
+    </div>
+    <div class="background">
+        <img class="image" src="images/background.webp">
+        <div class="mask"></div>
+        <div class="info">
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8ZM12 18C13.1 18 14 18.9 14 20C14 21.1 13.1 22 12 22C10.9 22 10 21.1 10 20C10 18.9 10.9 18 12 18Z" fill="currentColor"/>
+            </svg>
+            <h1>须弥</h1>
+            <p>提瓦特大陆</p>
+        </div>
+        <div class="music" id="background_music">
+            <img src="images/cover.webp">
+            <h1>あいつら全員同窓会</h1>
+            <p>ずっと真夜中でいいのに</p>
+            <audio id="background_music_audio" src="https://music.163.com/song/media/outer/url?id=1854474192.mp3" preload loop hidden></audio>
+        </div>
+    </div>
+</body>
+</html>
