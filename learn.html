@@ -1,8 +1,8 @@
+<!-- 关于我 -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="utf-8">
-    <title>关于 - 陈炎德的个人网站</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .about-container {
@@ -134,6 +134,30 @@
         .section-content strong {
             color: #2e7d32;
         }
+        
+        /* 黑幕效果样式 */
+        .black幕 {
+            background-color: black;
+            color: black;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        /* PC端鼠标悬浮效果 */
+        @media (min-width: 768px) {
+            .black幕:hover {
+                background-color: black;
+                color: white;
+            }
+        }
+        
+        /* 移动端点击效果 */
+        .black幕.active {
+            background-color: black;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -220,11 +244,46 @@
     </div>
     
     <script>
-        // 选项卡切换逻辑
+        // 从JSON文件读取数据并渲染
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.about-tab');
             const sections = document.querySelectorAll('.content-section');
             
+            // 从JSON文件读取数据
+            fetch('learn-data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // 渲染所有内容区域
+                    Object.keys(data).forEach(key => {
+                        const section = document.getElementById(key);
+                        if (section) {
+                            const sectionData = data[key];
+                            const contentDiv = section.querySelector('.section-content');
+                            
+                            // 清空现有内容
+                            contentDiv.innerHTML = '';
+                            
+                            // 渲染新内容
+                            sectionData.content.forEach(item => {
+                                const p = document.createElement('p');
+                                if (item.label) {
+                                    p.innerHTML = `<strong>${item.label}</strong>${item.value}`;
+                                } else {
+                                    p.textContent = item.value;
+                                }
+                                contentDiv.appendChild(p);
+                            });
+                        }
+                    });
+                    
+                    // 为所有黑幕元素添加点击事件
+                    addBlack幕Events();
+                })
+                .catch(error => {
+                    console.error('读取数据失败:', error);
+                });
+            
+            // 选项卡切换逻辑
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     // 移除所有选项卡的active类
@@ -238,8 +297,21 @@
                     sections.forEach(section => section.classList.remove('active'));
                     // 添加目标内容区域的active类
                     document.getElementById(target).classList.add('active');
+                    
+                    // 为新显示的内容区域中的黑幕元素添加点击事件
+                    setTimeout(addBlack幕Events, 100);
                 });
             });
+            
+            // 添加黑幕元素的点击事件
+            function addBlack幕Events() {
+                const black幕Elements = document.querySelectorAll('.black幕');
+                black幕Elements.forEach(element => {
+                    element.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                    });
+                });
+            }
         });
     </script>
 </body>
