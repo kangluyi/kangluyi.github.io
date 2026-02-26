@@ -164,144 +164,125 @@
     <div class="about-container">
         <!-- 侧边栏选项卡 -->
         <div class="about-sidebar">
-            <div class="about-tabs">
-                <div class="about-tab active" data-target="personal">个人信息</div>
-                <div class="about-tab" data-target="skills">技能</div>
-                <div class="about-tab" data-target="education">教育背景</div>
-                <div class="about-tab" data-target="experience">工作经历</div>
-                <div class="about-tab" data-target="projects">项目经验</div>
-                <div class="about-tab" data-target="philosophy">个人理念</div>
+            <div class="about-tabs" id="sidebar-tabs">
+                <!-- 侧边栏选项卡将从JSON文件加载 -->
             </div>
         </div>
         
         <!-- 内容区域 -->
-        <div class="about-content">
-            <!-- 个人信息 -->
-            <div class="content-section active" id="personal">
-                <h2 class="section-title">个人信息</h2>
-                <div class="section-content">
-                    <p><strong>姓名：</strong>陈炎德</p>
-                    <p><strong>职业：</strong>软件开发者</p>
-                    <p><strong>爱好：</strong>编程、阅读、旅游</p>
-                    <p><strong>特点：</strong>对新技术充满热情，不断学习成长</p>
-                </div>
-            </div>
-            
-            <!-- 技能 -->
-            <div class="content-section" id="skills">
-                <h2 class="section-title">技能</h2>
-                <div class="section-content">
-                    <ul>
-                        <li><strong>前端开发：</strong>HTML、CSS、JavaScript、React、Vue</li>
-                        <li><strong>后端开发：</strong>Node.js、Python、PHP</li>
-                        <li><strong>数据库：</strong>MySQL、MongoDB</li>
-                        <li><strong>其他：</strong>Git、Docker、Linux</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- 教育背景 -->
-            <div class="content-section" id="education">
-                <h2 class="section-title">教育背景</h2>
-                <div class="section-content">
-                    <p><strong>本科：</strong>计算机科学与技术</p>
-                    <p><strong>研究生：</strong>软件工程</p>
-                    <p><strong>主修课程：</strong>数据结构、算法、操作系统、计算机网络</p>
-                </div>
-            </div>
-            
-            <!-- 工作经历 -->
-            <div class="content-section" id="experience">
-                <h2 class="section-title">工作经历</h2>
-                <div class="section-content">
-                    <p>曾在多家科技公司担任软件工程师，参与过多个大型项目的开发。</p>
-                    <p><strong>擅长领域：</strong>Web应用开发、移动应用开发、系统架构设计</p>
-                </div>
-            </div>
-            
-            <!-- 项目经验 -->
-            <div class="content-section" id="projects">
-                <h2 class="section-title">项目经验</h2>
-                <div class="section-content">
-                    <p><strong>个人博客系统：</strong>使用React + Node.js开发</p>
-                    <p><strong>电商网站：</strong>基于Vue.js和Express开发</p>
-                    <p><strong>任务管理系统：</strong>使用React和Firebase开发</p>
-                    <p><strong>在线学习平台：</strong>基于Python Django开发</p>
-                </div>
-            </div>
-            
-            <!-- 个人理念 -->
-            <div class="content-section" id="philosophy">
-                <h2 class="section-title">个人理念</h2>
-                <div class="section-content">
-                    <p><strong>不断学习：</strong>保持对新技术的敏感度</p>
-                    <p><strong>注重质量：</strong>追求代码的优雅和可维护性</p>
-                    <p><strong>团队合作：</strong>善于与他人协作完成项目</p>
-                    <p><strong>分享知识：</strong>喜欢帮助他人，分享自己的经验</p>
-                </div>
-            </div>
+        <div class="about-content" id="content-area">
+            <!-- 内容区域将从JSON文件加载 -->
         </div>
     </div>
     
     <script>
         // 从JSON文件读取数据并渲染
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.about-tab');
-            const sections = document.querySelectorAll('.content-section');
-            
             // 从JSON文件读取数据
             fetch('learn-data.json')
                 .then(response => response.json())
                 .then(data => {
-                    // 渲染所有内容区域
-                    Object.keys(data).forEach(key => {
-                        const section = document.getElementById(key);
-                        if (section) {
-                            const sectionData = data[key];
-                            const contentDiv = section.querySelector('.section-content');
-                            
-                            // 清空现有内容
-                            contentDiv.innerHTML = '';
-                            
-                            // 渲染新内容
-                            sectionData.content.forEach(item => {
-                                const p = document.createElement('p');
-                                if (item.label) {
-                                    p.innerHTML = `<strong>${item.label}</strong>${item.value}`;
-                                } else {
-                                    p.textContent = item.value;
-                                }
-                                contentDiv.appendChild(p);
-                            });
-                        }
-                    });
+                    // 渲染侧边栏选项卡（直接使用sections）
+                    renderSidebar(data.sections);
+                    
+                    // 渲染内容区域
+                    renderContent(data.sections);
                     
                     // 为所有黑幕元素添加点击事件
                     addBlack幕Events();
+                    
+                    // 绑定选项卡切换事件
+                    bindTabEvents();
                 })
                 .catch(error => {
                     console.error('读取数据失败:', error);
                 });
             
-            // 选项卡切换逻辑
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 移除所有选项卡的active类
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // 添加当前选项卡的active类
-                    this.classList.add('active');
+            // 渲染侧边栏（直接使用sections）
+            function renderSidebar(sectionsData) {
+                const sidebarTabs = document.getElementById('sidebar-tabs');
+                if (sidebarTabs && sectionsData) {
+                    // 清空现有内容
+                    sidebarTabs.innerHTML = '';
                     
-                    // 获取目标内容区域
-                    const target = this.getAttribute('data-target');
-                    // 移除所有内容区域的active类
-                    sections.forEach(section => section.classList.remove('active'));
-                    // 添加目标内容区域的active类
-                    document.getElementById(target).classList.add('active');
+                    // 渲染选项卡
+                    sectionsData.forEach((section, index) => {
+                        const tabElement = document.createElement('div');
+                        tabElement.className = `about-tab ${index === 0 ? 'active' : ''}`;
+                        tabElement.setAttribute('data-target', section.id);
+                        tabElement.textContent = section.title;
+                        sidebarTabs.appendChild(tabElement);
+                    });
+                }
+            }
+            
+            // 渲染内容区域
+            function renderContent(sectionsData) {
+                const contentArea = document.getElementById('content-area');
+                if (contentArea && sectionsData) {
+                    // 清空现有内容
+                    contentArea.innerHTML = '';
                     
-                    // 为新显示的内容区域中的黑幕元素添加点击事件
-                    setTimeout(addBlack幕Events, 100);
+                    // 渲染内容区域
+                    sectionsData.forEach((sectionData, index) => {
+                        const sectionElement = document.createElement('div');
+                        sectionElement.className = `content-section ${index === 0 ? 'active' : ''}`;
+                        sectionElement.id = sectionData.id;
+                        
+                        // 创建标题
+                        const titleElement = document.createElement('h2');
+                        titleElement.className = 'section-title';
+                        titleElement.textContent = sectionData.title;
+                        
+                        // 创建内容容器
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'section-content';
+                        
+                        // 渲染内容
+                        if (sectionData.content) {
+                            sectionData.content.forEach(item => {
+                                const p = document.createElement('p');
+                                if (item.label) {
+                                    p.innerHTML = `<strong>${item.label}</strong>${item.value}`;
+                                } else {
+                                    p.innerHTML = item.value;
+                                }
+                                contentDiv.appendChild(p);
+                            });
+                        }
+                        
+                        // 组装内容区域
+                        sectionElement.appendChild(titleElement);
+                        sectionElement.appendChild(contentDiv);
+                        contentArea.appendChild(sectionElement);
+                    });
+                }
+            }
+            
+            // 绑定选项卡切换事件
+            function bindTabEvents() {
+                const tabs = document.querySelectorAll('.about-tab');
+                const sections = document.querySelectorAll('.content-section');
+                
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // 移除所有选项卡的active类
+                        tabs.forEach(t => t.classList.remove('active'));
+                        // 添加当前选项卡的active类
+                        this.classList.add('active');
+                        
+                        // 获取目标内容区域
+                        const target = this.getAttribute('data-target');
+                        // 移除所有内容区域的active类
+                        sections.forEach(section => section.classList.remove('active'));
+                        // 添加目标内容区域的active类
+                        document.getElementById(target).classList.add('active');
+                        
+                        // 为新显示的内容区域中的黑幕元素添加点击事件
+                        setTimeout(addBlack幕Events, 100);
+                    });
                 });
-            });
+            }
             
             // 添加黑幕元素的点击事件
             function addBlack幕Events() {
