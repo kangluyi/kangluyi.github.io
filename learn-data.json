@@ -2,7 +2,7 @@
   "sections": [
     {
       "id": "me",
-      "title": "关于",
+      "title": "我",
       "content": [
         {"value": "<span class=\"black幕\">一个超普通的大学生</span>就读于 山东外事职业大学，是2024级信息工程学院大数据工程技术的一名本科生，平时喜欢制作一些各种各样的小东西（例如说：网页）" }
       ]
@@ -15,40 +15,27 @@
       ]
     },
     {
-      "id": "education",
-      "title": "教育背景",
+      "id": "tech-stack",
+      "title": "技术栈",
       "content": [
-        { "label": "本科：", "value": "计算机科学与技术" },
-        { "label": "研究生：", "value": "<span class=\"black幕\">软件工程</span>" },
-        { "label": "主修课程：", "value": "数据结构、算法、<span class=\"black幕\">操作系统、计算机网络</span>" }
+        { "value": "我会：C、HTM、CSS" },
+        { "value": "还有一点点的PHP、SQL" }
       ]
     },
     {
-      "id": "experience",
-      "title": "工作经历",
+      "id": "school",
+      "title": "学校",
       "content": [
-        { "value": "曾在<span class=\"black幕\">多家科技公司</span>担任软件工程师，参与过多个大型项目的开发。" },
-        { "label": "擅长领域：", "value": "Web应用开发、<span class=\"black幕\">移动应用开发、系统架构设计</span>" }
+        { "value": "山东外事职业大学" }
       ]
     },
     {
-      "id": "projects",
-      "title": "项目经验",
+      "id": "guoctang",
+      "title": "果C堂",
       "content": [
-        { "label": "个人博客系统：", "value": "使用<span class=\"black幕\">React + Node.js</span>开发" },
-        { "label": "电商网站：", "value": "基于<span class=\"black幕\">Vue.js和Express</span>开发" },
-        { "label": "任务管理系统：", "value": "使用<span class=\"black幕\">React和Firebase</span>开发" },
-        { "label": "在线学习平台：", "value": "基于<span class=\"black幕\">Python Django</span>开发" }
-      ]
-    },
-    {
-      "id": "philosophy",
-      "title": "个人理念",
-      "content": [
-        { "label": "不断学习：", "value": "保持对新技术的敏感度" },
-        { "label": "注重质量：", "value": "追求代码的优雅和<span class=\"black幕\">可维护性</span>" },
-        { "label": "团队合作：", "value": "善于与他人协作完成项目" },
-        { "label": "分享知识：", "value": "喜欢帮助他人，<span class=\"black幕\">分享自己的经验</span>" }
+        { "value": "是我的博客呐~" },
+        { "value": "当时我可是搭建了好久好久  <span class=\"black幕\">其实，是鸽了好久</span>" },
+        { "label": "任务管理系统：", "value": "贴一下链接：<a href=\"https:\/\/guoctang.com\">guoctang</a> 欢迎大家去玩哦(\\*^▽^\\*)" }
       ]
     }
   ]

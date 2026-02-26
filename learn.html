@@ -210,7 +210,7 @@
                         const tabElement = document.createElement('div');
                         tabElement.className = `about-tab ${index === 0 ? 'active' : ''}`;
                         tabElement.setAttribute('data-target', section.id);
-                        tabElement.textContent = section.title;
+                        tabElement.textContent = `关于${section.title}...`;
                         sidebarTabs.appendChild(tabElement);
                     });
                 }
@@ -232,7 +232,7 @@
                         // 创建标题
                         const titleElement = document.createElement('h2');
                         titleElement.className = 'section-title';
-                        titleElement.textContent = sectionData.title;
+                        titleElement.textContent = `关于「${sectionData.title}」`;
                         
                         // 创建内容容器
                         const contentDiv = document.createElement('div');
