@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainLoading = document.getElementById('main_loading');
     const backgroundMusic = document.getElementById('background_music');
     const backgroundMusicAudio = document.getElementById('background_music_audio');
-    const mainHomeLeftCover = document.getElementById('main_home_left_cover');
+
 
     // 菜单点击事件
     function openContent(title, url) {
@@ -34,13 +34,42 @@ document.addEventListener('DOMContentLoaded', function() {
         mainContentFrame.src = '';
     }
 
+    function bindMenu(menu, title, url) {
+        if (!menu) {
+            return;
+        }
+
+        menu.addEventListener('click', function() {
+            openContent(title, url);
+        });
+
+        menu.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openContent(title, url);
+            }
+        });
+    }
+
     // 音乐播放控制
     function toggleMusic() {
         if (backgroundMusicAudio.paused) {
             backgroundMusicAudio.play();
+            backgroundMusic.classList.add('playing');
         } else {
             backgroundMusicAudio.pause();
+            backgroundMusic.classList.remove('playing');
         }
+    }
+
+    // 监听音频播放状态变化，同步UI
+    if (backgroundMusicAudio) {
+        backgroundMusicAudio.addEventListener('play', function() {
+            backgroundMusic.classList.add('playing');
+        });
+        backgroundMusicAudio.addEventListener('pause', function() {
+            backgroundMusic.classList.remove('playing');
+        });
     }
 
     // 绑定事件
@@ -52,29 +81,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (homeLearn) {
-        homeLearn.addEventListener('click', function() {
-            openContent('了解', 'learn.html');
-        });
-    }
-
-    if (homeProjects) {
-        homeProjects.addEventListener('click', function() {
-            openContent('项目', 'projects.html');
-        });
-    }
-
-    if (homeContact) {
-        homeContact.addEventListener('click', function() {
-            openContent('联系', 'contact.html');
-        });
-    }
-
-    if (homeDonate) {
-        homeDonate.addEventListener('click', function() {
-            openContent('捐助', 'donate.html');
-        });
-    }
+    bindMenu(homeLearn, '了解', 'learn.html');
+    bindMenu(homeProjects, '项目', 'projects.html');
+    bindMenu(homeContact, '联系', 'contact.html');
+    bindMenu(homeDonate, '捐助', 'donate.html');
 
     if (mainContentClose) {
         mainContentClose.addEventListener('click', closeContent);
@@ -84,9 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backgroundMusic.addEventListener('click', toggleMusic);
     }
 
-    if (mainHomeLeftCover) {
-        mainHomeLeftCover.addEventListener('click', toggleMusic);
-    }
+
 
     // 初始化页面
     console.log('个人网站初始化完成');

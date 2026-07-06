@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>陈延德的个人网站</title>
     <link rel="icon" type="image/webp" href="images/avatar.webp">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -36,35 +36,63 @@
                     <p class="text">喜欢分享知识，帮助他人</p>
                     <p class="text">请多指教！</p>
                 </div>
+                <div class="profile-tags" aria-label="个人标签">
+                    <span>Frontend</span>
+                    <span>Backend</span>
+                    <span>Sharing</span>
+                </div>
             </div>
             <div class="right">
-                <div class="menu" id="home_learn">
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
-                    </svg>
-                    <h1 class="title">关于</h1>
-                    <p class="subtitle">通过各种词条，关于我究竟是一个怎样的人。</p>
+                <div class="nav-heading">
+                    <p class="eyebrow">Personal Portal</p>
+                    <h2>从这里开始探索</h2>
+                    <p>选择一个入口，了解我的经历、作品、联系方式和支持方式。</p>
                 </div>
-                <div class="menu" id="home_projects">
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
-                    </svg>
-                    <h1 class="title">项目</h1>
-                    <p class="subtitle">这是我开发过或正在开发的主要项目。</p>
-                </div>
-                <div class="menu" id="home_contact">
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
-                    </svg>
-                    <h1 class="title">联系</h1>
-                    <p class="subtitle">您可以通过这些渠道联系上我。</p>
-                </div>
-                <div class="menu" id="home_donate">
-                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 18L15 12L9 6V18Z" fill="currentColor"/>
-                    </svg>
-                    <h1 class="title">捐助</h1>
-                    <p class="subtitle">如果您有条件，不妨伸出援手，这对我真的很重要！</p>
+                <div class="nav-grid" aria-label="站点导航">
+                    <div class="menu featured" id="home_learn" role="button" tabindex="0">
+                        <span class="menu-index">01</span>
+                        <span class="icon-shell">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3ZM12 17L3 11V14L12 20L21 14V11L12 17Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <h1 class="title">关于</h1>
+                        <p class="subtitle">通过各种词条，关于我究竟是一个怎样的人。</p>
+                        <span class="menu-action">进入页面</span>
+                    </div>
+                    <div class="menu" id="home_projects" role="button" tabindex="0">
+                        <span class="menu-index">02</span>
+                        <span class="icon-shell">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6H12L10 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V8C22 6.9 21.1 6 20 6Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <h1 class="title">项目</h1>
+                        <p class="subtitle">这是我开发过或正在开发的主要项目。</p>
+                        <span class="menu-action">查看作品</span>
+                    </div>
+                    <div class="menu" id="home_contact" role="button" tabindex="0">
+                        <span class="menu-index">03</span>
+                        <span class="icon-shell">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <h1 class="title">联系</h1>
+                        <p class="subtitle">您可以通过这些渠道联系上我。</p>
+                        <span class="menu-action">取得联系</span>
+                    </div>
+                    <div class="menu" id="home_donate" role="button" tabindex="0">
+                        <span class="menu-index">04</span>
+                        <span class="icon-shell">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        <h1 class="title">捐助</h1>
+                        <p class="subtitle">如果您有条件，不妨伸出援手，这对我真的很重要！</p>
+                        <span class="menu-action">支持维护</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,18 +115,22 @@
     <div class="background">
         <img class="image" src="https://cravatar.cn/avatar/122cc32d37f97c755cdd0ea8672ff1b7">
         <div class="mask"></div>
-        <div class="info">
-            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8ZM12 18C13.1 18 14 18.9 14 20C14 21.1 13.1 22 12 22C10.9 22 10 21.1 10 20C10 18.9 10.9 18 12 18Z" fill="currentColor"/>
-            </svg>
-            <h1>须弥</h1>
-            <p><a href="https://beian.miit.gov.cn/" target="_blank" style="color: inherit; text-decoration: none;"></a>鲁ICP备2026008616号-1</a></p>
-        </div>
-        <div class="music" id="background_music">
+        <div class="footer-container">
+            <div class="footer-left">
+                <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8ZM12 18C13.1 18 14 18.9 14 20C14 21.1 13.1 22 12 22C10.9 22 10 21.1 10 20C10 18.9 10.9 18 12 18Z" fill="currentColor"/>
+                </svg>
+                <h1>须弥</h1>
+            </div>
+            <div class="footer-center">
+                <p><a href="https://beian.miit.gov.cn/" target="_blank" style="color: inherit; text-decoration: none;">鲁ICP备2026008616号-1</a></p>
+            </div>
+            <div class="footer-right" id="background_music">
             <img src="https://cravatar.cn/avatar/122cc32d37f97c755cdd0ea8672ff1b7">
             <h1>あいつら全員同窓会</h1>
             <p>ずっと真夜中でいいのに</p>
             <audio id="background_music_audio" src="https://music.163.com/song/media/outer/url?id=1854474192.mp3" preload loop hidden></audio>
+            </div>
         </div>
     </div>
 </body>
